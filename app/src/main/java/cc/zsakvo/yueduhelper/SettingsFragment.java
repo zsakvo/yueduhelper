@@ -57,7 +57,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     private void showSnackBar(){
         Snackbar snackbar = Snackbar.make(Objects.requireNonNull(getView()),"代码复制成功，请去「阅读」内新建并粘贴书源",Snackbar.LENGTH_LONG);
         View mView = snackbar.getView();
-        mView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         snackbar.show();
     }
 

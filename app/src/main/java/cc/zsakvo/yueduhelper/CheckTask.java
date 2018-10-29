@@ -71,7 +71,7 @@ public class CheckTask extends TimerTask {
                             .build();
             String NOTIFICATION_CHANNEL_ID = "cc.zsakvo.yueduhelper";
             String channelName = "解析服务";
-            NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+            NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_MIN);
             chan.setLightColor(Color.BLUE);
             chan.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
             NotificationManager manager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -85,7 +85,7 @@ public class CheckTask extends TimerTask {
                     .setContentText(s)
                     .setContentIntent(api)
                     .setWhen(System.currentTimeMillis())
-                    .setColor(mContext.getColor(R.color.colorPrimary))
+                    .setColor(mContext.getColor(R.color.colorPrimaryDark))
                     .setPriority(NotificationManager.IMPORTANCE_UNSPECIFIED)
                     .setCategory(Notification.CATEGORY_SERVICE)
                     .addAction(action)

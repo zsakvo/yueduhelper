@@ -65,7 +65,7 @@ public class HelperService extends Service {
                             .build();
             String NOTIFICATION_CHANNEL_ID = "cc.zsakvo.yueduhelper";
             String channelName = "解析服务";
-            NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+            NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_MIN);
             chan.setLightColor(Color.BLUE);
             chan.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -79,7 +79,7 @@ public class HelperService extends Service {
                     .setContentText(s)
                     .setContentIntent(api)
                     .setWhen(System.currentTimeMillis())
-                    .setColor(getApplicationContext().getColor(R.color.colorPrimary))
+                    .setColor(getApplicationContext().getColor(R.color.colorPrimaryDark))
                     .setPriority(NotificationManager.IMPORTANCE_UNSPECIFIED)
                     .setCategory(Notification.CATEGORY_SERVICE)
                     .addAction(action)

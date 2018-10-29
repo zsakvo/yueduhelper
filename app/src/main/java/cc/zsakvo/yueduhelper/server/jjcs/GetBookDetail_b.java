@@ -1,10 +1,14 @@
 package cc.zsakvo.yueduhelper.server.jjcs;
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+
+import static cc.zsakvo.yueduhelper.HelperService.TAG;
 
 public class GetBookDetail_b {
     private String id;
@@ -43,16 +47,23 @@ public class GetBookDetail_b {
             html.append("</div>");
             html.append("<div id=\"list\">");
             String[] urlParam;
+            String volume ="";
             for (Element e:dir.children()){
-                urlParam = e.selectFirst("a").attr("href").split("/");
-                String url = "chapter?link="+urlParam[2]+"/"+urlParam[3];
-                html.append("<dd>")
-                        .append("<a href=\"")
-                        .append(url)
-                        .append("\">")
-                        .append( e.selectFirst("a").text())
-                        .append("</a>")
-                        .append("</dd>");
+                if (e.tagName().equals("dt")){
+                    volume = e.text();
+                }else {
+                    urlParam = e.selectFirst("a").attr("href").split("/");
+                    String url = "chapter?link="+urlParam[2]+"/"+urlParam[3];
+                    html.append("<dd>")
+                            .append("<a href=\"")
+                            .append(url)
+                            .append("\">")
+                            .append(volume)
+                            .append("  ")
+                            .append(e.selectFirst("a").text())
+                            .append("</a>")
+                            .append("</dd>");
+                }
             }
             html.append("</div>");
             return html.toString();
