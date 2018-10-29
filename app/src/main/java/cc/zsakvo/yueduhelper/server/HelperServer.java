@@ -121,7 +121,9 @@ public class HelperServer extends NanoHTTPD  {
                     html ="欢迎使用阅读助手 By zsakvo";
                     break;
         }
-        return newFixedLengthResponse(html);
+        Response response = newFixedLengthResponse(html);
+        response.setGzipEncoding(true);
+        return response;
     }
 
     private String getParam(IHTTPSession session,String key){
